@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class TreasureHunt {
+public class Main {
     
     public static void main (String[] args) throws IOException {
   
