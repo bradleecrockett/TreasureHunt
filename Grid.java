@@ -8,6 +8,7 @@ public class Grid {
     }
     
     public void createKingdom(ArrayList<String> p) {
+        // Need to change to match your storylines...
         int i = 0;
         for (int r = 0; r < kingdom.length; r++)
            for (int c = 0; c < kingdom[r].length; c++){
@@ -38,7 +39,9 @@ public class Grid {
     
     public boolean isValid(int r, int c) {
         System.out.println ("** in grid is valid " + r + " " + c);
-        return (r >= 0 && r < kingdom.length && c >=0 && c < kingdom[0].length);
+        boolean validRow = true; // replace with valid row expression
+        boolean validCol = true; // replace with valid col expression
+        return validCol && validRow;
     }
     
     public boolean placeContains(int r, int c, String i) {
@@ -51,10 +54,12 @@ public class Grid {
     }
     
     public String toString() {
+        //print the entire map with room names        
         String temp = "";
         for (Place[] row : kingdom)
            for (Place p : row)
-              temp += p + "\n";
+              temp += p + "\t\t";
+            temp += "\n";
         return temp;
     }
            
