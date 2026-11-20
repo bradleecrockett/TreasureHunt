@@ -8,6 +8,7 @@ public class Foe extends Entity {
     }
     
     public int computeBattleNumber() {
-        return (int)(Math.random()*10) + strength;
+        //needs more intersting battle calculation
+        return 5;
     }
 }
