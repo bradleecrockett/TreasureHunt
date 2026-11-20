@@ -1,76 +1,71 @@
 import java.util.*;
 import java.io.*;
 public class Main {
-    
-    public static void main (String[] args) throws IOException {
-  
-       Scanner file = new Scanner(new File("TreasureHunt.txt"));
-       int gridRow = file.nextInt();
-       int gridCol = file.nextInt();
-       Grid grid = new Grid(gridRow, gridCol);
-       file.nextLine();//moves you to the 3rd line
-       
-       ArrayList<String> places = new ArrayList<String>();
-       for (int i = 0; i < gridRow*gridCol - 2; i ++)
-           places.add(file.nextLine());
-       
-       
-       grid.createKingdom(places);
-       
 
-        
-      int numTreasures = file.nextInt();
-       for (int i = 0; i < numTreasures; i++)
-          grid.addItemToPlace(new Treasure(file.next(), file.nextInt()));
-          
-       int numWeapons = file.nextInt();
-       for (int i = 0; i < numWeapons; i++)
-          grid.addItemToPlace(new Weapon(file.next(), file.nextInt()));
-          
-       int numFoes = file.nextInt();
-       for (int i = 0; i < numFoes; i++)
-          grid.addFoeToPlace(new Foe(file.next(), file.nextInt()));
-          
-       //System.out.println(grid);
-       
-       Princess fiona = new Princess("Fiona", grid);
-       
-       boolean done = false;
-       System.out.print("********* Treasure Hunt ************\n");
-       System.out.print("*  Welcome!  Type 'help' to begin. *\n");
-       System.out.println("************************************\n");
-       Scanner scan = new Scanner(System.in);       
-       while (!done) {
-           
-           done = promptUser(scan,fiona);
-           
-           
-           
-        }     
-        
-    }
-    
-    public static boolean promptUser(Scanner scan, Princess p) {
-        System.out.print ("Enter command: ");
-        String input = scan.next();
-        switch (input) {
-            case "help":  System.out.println("'help' 'move' 'battle' 'view' 'pickup' 'status' 'quit'");
-                     break;
-            case "move":  p.move(scan.next().substring(0,1));
-                     break;
-            case "battle":  p.battle();
-                     break;
-            case "view":  p.view();
-                     break;
-            case "pickup": p.pickup(scan.next());
-                     break;
-            case "status": p.status();
-                     break;
-            case "quit": return true;
-                    
-            default: System.out.println ("Invalid choice.");                         
-                     break;
+    public static void main(String[] args) throws IOException {
+
+        Scanner file = new Scanner(new File("TreasureHunt.txt"));
+        int gridRow = file.nextInt();
+        int gridCol = file.nextInt();
+        Grid grid = new Grid(gridRow, gridCol);
+        file.nextLine();// moves you to the 3rd line
+
+        ArrayList<String> places = new ArrayList<String>();
+        for (int i = 0; i < gridRow * gridCol - 2; i++)
+            places.add(file.nextLine());
+
+        grid.createKingdom(places);
+
+        int numTreasures = file.nextInt();
+        for (int i = 0; i < numTreasures; i++)
+            grid.addItemToPlace(new Treasure(file.next(), file.nextInt()));
+
+        int numWeapons = file.nextInt();
+        for (int i = 0; i < numWeapons; i++)
+            grid.addItemToPlace(new Weapon(file.next(), file.nextInt()));
+
+        int numFoes = file.nextInt();
+        for (int i = 0; i < numFoes; i++)
+            grid.addFoeToPlace(new Foe(file.next(), file.nextInt()));
+
+        // System.out.println(grid);
+
+        Princess fiona = new Princess("Fiona", grid);
+
+        boolean done = false;
+        System.out.print("********* Treasure Hunt ************\n");
+        System.out.print("*  Welcome!  Type 'help' to begin. *\n");
+        System.out.println("************************************\n");
+        Scanner scan = new Scanner(System.in);
+        while (!done) {
+
+            done = promptUser(scan, fiona);
+
         }
+
+    }
+
+
+
+
+
+
+    public static boolean promptUser(Scanner scan, Princess p) {
+        System.out.print("Enter command: ");
+        String input = scan.next();
+        if (input.equals("help")) {
+            System.out.println("'help' 'move' 'battle' 'view' 'pickup' 'status' 'quit'");
+        } else if (input.equals("move")) {
+            p.move(scan.next().substring(0, 1));
+        } else if (input.equals("battle")) {
+            p.battle();
+        } else if (input.equals("view")) {
+            p.view();
+        } else if (input.equals("pickup")) {
+            p.pickup(scan.next());
+        }
+        // Continue with `else if` branches for the remaining cases,
+        // and an `else` branch for the switch's `default`, if present.
         return false;
     }
 }

@@ -26,27 +26,29 @@ public class Princess extends Entity
         
 
     public void move(String d) {
-           boolean valid = false;  
-           d = d.toUpperCase();
-           switch (d) {
-              case "N": valid = grid.isValid(row -1, col);   
-                        if (valid) row = row-1;
-                    break;
-              case "S": valid = grid.isValid(row+1, col);
-                        if (valid) row = row+1;
-                    break;
-              case "E": valid = grid.isValid(row,col+1);
-                        if (valid) col = col+1;
-                    break;
-              case "W": valid = grid.isValid(row,col-1);
-                        if (valid) col = col -1;
-                    break;
-              default: valid = false;
-                    break;
-           }
-
-           if (!valid)
-                 System.out.println("Invalid place or direction.\n");
+           boolean valid = false;
+        d = d.toUpperCase();
+        if (d.equals("N")) {
+            valid = grid.isValid(row - 1, col);
+            if (valid)
+                row = row - 1;
+        } else if (d.equals("S")) {
+            valid = grid.isValid(row + 1, col);
+            if (valid)
+                row = row + 1;
+        } else if (d.equals("E")) {
+            valid = grid.isValid(row, col + 1);
+            if (valid)
+                col = col + 1;
+        } else if (d.equals("W")) {
+            valid = grid.isValid(row, col - 1);
+            if (valid)
+                col = col - 1;
+        } else {
+            valid = false;
+        }
+        if (!valid)
+            System.out.println("Invalid place or direction.\n");
     }
 
     public void battle() {
