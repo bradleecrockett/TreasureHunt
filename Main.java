@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -30,7 +31,7 @@ public class Main {
 
         // System.out.println(grid);
 
-        Princess fiona = new Princess("Fiona", grid);
+        Hero fiona = new Hero("Fiona", grid);
 
         boolean done = false;
         System.out.print("********* Treasure Hunt ************\n");
@@ -45,12 +46,7 @@ public class Main {
 
     }
 
-
-
-
-
-
-    public static boolean promptUser(Scanner scan, Princess p) {
+    public static boolean promptUser(Scanner scan, Hero p) {
         System.out.print("Enter command: ");
         String input = scan.next();
         if (input.equals("help")) {
