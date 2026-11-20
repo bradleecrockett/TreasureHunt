@@ -4,7 +4,8 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
+        /*********************************************/
+        // All of this is for reading in a text file to create the world
         Scanner file = new Scanner(new File("TreasureHunt.txt"));
         int gridRow = file.nextInt();
         int gridCol = file.nextInt();
@@ -30,6 +31,9 @@ public class Main {
             grid.addFoeToPlace(new Foe(file.next(), file.nextInt()));
 
         // System.out.println(grid);
+
+        // Done Creating World
+        /*********************************************/
 
         Hero fiona = new Hero("Fiona", grid);
 
